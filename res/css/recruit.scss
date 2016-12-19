@@ -1,0 +1,126 @@
+@charset "utf-8";
+
+@import "about-pos";
+@import "modules/slide";
+@import "modules/var";
+@import "modules/mixins";
+
+$header-height: 50px;
+$slide-dot-size: 10px;
+$banner-height: 400px;
+$banner-background: #28AAFF;
+$banner-left: 25px;
+$link-color: #1CA4FC;
+$introduction-h: 110px;
+$recruit-slide-width: 421px;
+
+.main{
+	margin-top: $mixheader-height;
+}
+.main-header{
+	@include h-equal-lh($header-height);
+	background: #3C9BF5;
+}
+.main-banner-wrapper{
+	background: $banner-background;
+	height: $banner-height;
+}
+.main-banner{
+	height: $banner-height - $font-size-base - 2px;
+	position: relative;
+	top: $font-size-base;
+	z-index: $max-z-index / 1000;
+	background: inherit;
+}
+.join_kz{
+	position: absolute;
+	top: 82px;
+	left: $banner-left;
+}
+.recruit-banner{
+	position: absolute;
+	left: 195px;
+}
+.look-pos{
+	@include h-equal-lh(39px);
+	width: 139px;
+	position: absolute;
+	top: 199px;
+	left: $banner-left;
+	display: inline-block;
+	background: #fff;
+	text-align: center;
+	font-family: STHeitiSC-Light;
+	font-size: 20px;
+	color: $link-color;
+	letter-spacing: 0.74px;
+}
+.section-introduction{
+	margin: 70px 110px;
+}
+.separate{
+	$h: 85px;
+	width: 2px;
+	height: $h;
+	display: inline-block;
+	margin: ($introduction-h - $h) / 2 35px ($introduction-h - $h) / 2 8px;
+	background: #D8D8D8;
+}
+.introduction{
+	width: 334px;
+	display: inline-block;
+	height: $introduction-h;
+	font-size: 21px;
+	padding: 10px 0px;
+	span{
+		color: #585858;
+		letter-spacing: 1.06px;
+	}
+}
+.to-kz{
+	letter-spacing: 0.89px;
+}
+.link{
+	color: #1A8FDA;
+}
+.section-us-hope{
+	width: 539px;
+	height: 48px;
+	font-size: 18px;
+	color: $banner-background;
+	letter-spacing: 0.74px;
+	margin: 0px auto 90px auto; 
+}
+.recruit-slide{
+	width: $container-width;
+	height: $recruit-slide-width;
+	cursor: pointer;
+}
+@include slide($container-width, $recruit-slide-width);
+.kz-logo{
+	background: transparent url(../../../images/kz-logo.png) no-repeat;
+	display: inline-block;
+}
+.kz-bg-logo{
+	width: 300px;
+	height: $introduction-h;
+	background-position: 0px -68px;
+	@extend .kz-logo;
+}
+.kz-sm-logo{
+	$h: 40px;
+	width: 105px;
+	height: $h;
+	@extend .kz-logo;
+	background-position: -14px -26px;
+	margin: ($header-height - $h) / 2 0px;
+}
+.recruit-slide-dot{
+	width: $slide-dot-size;
+	height: $slide-dot-size;
+	margin-left: $slide-dot-size;
+}
+.recruit-slide-ul{
+	width: 11 * $slide-dot-size;
+	bottom: 78px;
+}

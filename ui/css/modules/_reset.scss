@@ -1,0 +1,16 @@
+body, html, div, span, object, iframe, p,
+pre, a, abbr, acronym, address,
+code, del, dfn, em, img,
+dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend,
+caption, tbody, tfoot, thead, tr {
+	@include reset-box-model;
+	// 兼容ie盒模型
+	font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+*{
+	outline: none;
+}
+a{
+	text-decoration: none;
+}

@@ -1,0 +1,85 @@
+@charset "utf-8";
+
+@import "modules/triangle";
+@import "modules/var";
+@import "modules/mixins";
+
+$title-color: #333333;
+$title-font-family: STHeitiSC-Medium;
+$text-font-family: STHeitiSC-Light;
+$triangle-width: 8px;
+$triangle-height: 5px;
+$triangle-color: #BEBEBE;
+$des-dem-interval: 20px;
+
+.about-pos-title{
+	font-family: $title-font-family;
+	color: $title-color;
+}
+.about-pos{
+	padding: 30px 77px;
+}
+.request-title{
+	font-size: 30px;
+	letter-spacing: 1.11px;
+}
+.request-text{
+	@include text-font;
+	li{
+		font-size: 18px;
+	}
+	letter-spacing: 0.66px;
+	margin-bottom: 60px;
+}
+.type-title{
+	border-bottom: 1px solid #F0F0F0;
+	@include font-size(0.81px, 22px);
+	padding: 12px 0px;
+}
+.pos{
+	margin: 30px 0px;
+	cursor: pointer;
+}
+.pos-block{
+	background: #FAFAFA;
+	color: $title-color;
+	font-size: $font-size-base;
+}
+.pos-title{
+	@extend .pos-block;
+	padding: 18px 20px;
+}
+.pos-triangle{
+	float: right;
+	margin: ($font-size-base - $triangle-height) / 2 0px;
+	&:hover{
+		@include triangle-round;
+	}
+}
+.not-spread{
+	@include triangle-bottom($triangle-width / 2, $triangle-height, $triangle-color);
+	@extend .pos-triangle;
+}
+.not-spread-top{
+	@include triangle-top($triangle-width / 2, $triangle-height, $triangle-color);
+	@extend .pos-triangle;
+}
+.pos-des{
+	padding-bottom: $des-dem-interval;
+}
+.pos-des-dem{
+	font-family: STHeitiSC-Light;
+	@extend .pos-block;
+	@include font-size(0.51px);
+	line-height: 1.5;
+	padding: 0px 40px $des-dem-interval 40px;
+}
+.pos-dem{
+	@extend .pos-des;
+	ol{
+		margin-left: 18px;
+	}
+}
+.zhanwei{
+	display: none;
+}

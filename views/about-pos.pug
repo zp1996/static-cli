@@ -1,0 +1,32 @@
+mixin pos(title,descriptions,demands)
+	div.unfold
+		div.pos
+			div.pos-title.unfold-click #{title}
+				span.not-spread
+			div.unfold-todo
+				div.pos-des-dem
+					div.pos-des 职位描述：
+						ul.normal-ul
+							each des in descriptions
+								li #{des}
+					div.pos-dem 职位要求：	
+						ol
+							each dem in demands
+								li #{dem}
+					a.link(href=hr_email.href) 投递简历
+mixin type-pos-list(title, pos_arr)
+	div.pos-list
+		div.type-title.about-pos-title #{title}
+		each pos in pos_arr
+			+pos(pos.title, pos.descriptions, pos.demands)
+div.about-pos#pos
+	div.pos-request
+		h1.request-title 职位需求
+		div.request-text 
+			ul.normal-ul
+				each request in requests
+					li #{request}
+				li 统一投递邮箱：
+					a.link(href=hr_email.href) #{hr_email.name}
+		each type in pos_types
+			+type-pos-list(type.title, type.pos)

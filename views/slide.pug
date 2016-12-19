@@ -1,0 +1,18 @@
+mixin li-img(url, index)
+	if (index === 0)
+		li.slide-li
+			img.slide-img(src=url, data-loaded="1")
+	else	
+		li.slide-li
+			img.slide-img(data-url=url, data-loaded="0")
+div.recruit-slide
+	div.slide-box
+		ul.inline-ul.slide-ul
+			- var len = img_urls.length;
+			- for (var i = 0; i < len; i++)
+				+li-img(img_urls[i], i)
+		ul.slide-dots.inline-ul.recruit-slide-ul
+			li.round.recruit-slide-dot#dot-active
+			- len--;
+			- while(len--)
+				li.round.recruit-slide-dot

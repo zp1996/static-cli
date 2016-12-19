@@ -1,45 +1,37 @@
 const gulp = require("gulp"),
 	sass = require("gulp-sass"),
 	browserSync = require("browser-sync"),
-	// jsdoc = require("gulp-jsdoc"),
-	pug = require("gulp-pug"),
 	exec = require("child_process").exec,
-	ui_path = `${__dirname}/ui`,
 	build_path = `${__dirname}/build`,
 	file_path = [
-		`${ui_path}/js/**/*.js`,
-		`${ui_path}/css/**/*.scss`,
-		`${__dirname}/views/**/*.pug`
+		`${__dirname}/ui/**/*.js`,
+		`${__dirname}/res/**/*.js`,
+		`${__dirname}/**/css/*.scss`
 	],
-	tasks = ["js", "pug", "sass"];
+	tasks = ["js", "sass"],
+	port = require("./port.json").port;
 
 gulp.task("js", () => {
-	return exec(`${__dirname}/bash.sh`, browserSync.reload);
+	// 异步生成文档
+	exec(`${__dirname}/bash.sh`);
+	return gulp.src(file_path.slice(0, 2))
+		.pipe(gulp.dest(`${build_path}/`))
+		.pipe(browserSync.reload({stream: true}));
 });
 
 gulp.task("sass", () => {
-	return gulp.src(file_path[1])
+	return gulp.src(file_path[2])
 		.pipe(sass({
-			outputStyle: "compressed"
+			outputStyle: "compressed",
+			includePaths: `${__dirname}/ui/css/`
 		}))
 		.pipe(gulp.dest(`${build_path}/css`))
 		.pipe(browserSync.reload({stream: true}));
 });
 
-gulp.task("pug", () => {
-	return gulp.src(file_path[2])
-		.pipe(pug({
-			pretty: true,
-		}))
-		.pipe(gulp.dest(`${__dirname}/html`))
-		.pipe(browserSync.reload({stream: true}));
-});
-
 gulp.task("server", tasks, () => {
 	browserSync.init({
-    	server: {
-    		baseDir: "./"
-    	}
+    	proxy: `http://localhost:${port}/`
   	});
 });
 

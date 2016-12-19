@@ -1,0 +1,33 @@
+- var time = ~~((+new Date()) / 1000);
+div.mixheader
+	div.container
+		a.cur.kuaizhan(href="javascript:void(0);") 快站
+		a.changyan(href="http://changyan.sohu.com/") 畅言
+		div.top-nav-login.unfold-default
+			a.btn-login.unfold-default-click(href="javascript:void(0);") 登录
+			div.login-box-wrapper.unfold-default-todo
+				div.login-arrow
+				div.login-box
+					div.login-dl.clearfix
+						label.label 账号：
+						input.input#login-email(type="text",placeholder="邮箱或手机号", autocomplete="off")
+						div.tips#tip-email
+					div.login-dl.clearfix
+						label.label 密码：
+						input.input#login-password(type="password",autocomplete="off")
+						div.tips#tip-password
+					div.login-dl.validata-dl.clearfix
+						label.label 验证码：
+						input.input#login-vcode(type="text")
+						img.validate-img(src="http://www.kuaizhan.com/passport/vcode?_=" + time)
+						div.tips#tip-vcode
+					div.login-dl.clearfix
+						input#remember-me(type="checkbox")
+						span.remember-me 记住我
+						a.forgetPwd(href="http://www.kuaizhan.com/passport/forget-pwd") 忘记密码?
+					div.login-dl.clearfix
+						a#login-btn(href="javascript:void(0);") 登录
+		div.top-nav-register
+			a.btn-register(href="http://www.kuaizhan.com/passport/") 免费注册
+
+

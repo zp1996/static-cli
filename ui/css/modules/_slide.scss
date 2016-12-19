@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+@import "mixins";
+
+@mixin slide($h, $w) {
+	.slide-box{
+		width: $h;
+		height: $w;
+		overflow: hidden;
+		position: relative;
+	}
+	.slide-ul{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	.slide-li{
+		background: #aaa;
+	}
+	.slide-img{
+		width: $h;
+		height: $w;
+	}
+	.slide-dots{
+		margin: auto;
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		margin: auto;
+		z-index: 10000;
+		li{
+			background: #ffffff;
+			@include hack-ie(0.6);
+		}
+	}
+	#dot-active{
+		background: #ffffff;
+		@include hack-ie(1);
+	}
+}

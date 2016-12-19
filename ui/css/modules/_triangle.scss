@@ -1,0 +1,23 @@
+@mixin transparent-left-right($half-width) {
+	border-right: $half-width solid transparent;
+	border-left: $half-width solid transparent;
+}
+@mixin triangle-top($half-width, $height, $color) {
+	border-bottom: $height solid $color;
+	@include transparent-left-right($half-width);
+}
+@mixin triangle-bottom($half-width, $height, $color) {
+	border-top: $height solid $color;
+	@include transparent-left-right($half-width);
+}
+@mixin triangle-round($time: 0.8s) {
+	animation: round $time linear;
+	@keyframes round{
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}

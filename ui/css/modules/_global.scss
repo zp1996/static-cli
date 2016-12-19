@@ -1,0 +1,49 @@
+@charset "utf-8";
+
+body{
+	background: $base-background;
+}
+.base-container{
+	@include container;
+}
+.white{
+	color: #fff;
+}
+.inline-ul{
+	list-style-type: none;
+	li{
+		float: left;
+	}
+	overflow: hidden;
+}
+.normal-ul{
+	list-style-type: none;
+	li{
+		margin: 1px 0px;
+	}
+}
+.round{
+	border-radius: 50%;
+}
+.show{
+	display: block;
+}
+.hide{
+	display: none;
+}
+.unfold-todo{
+	overflow: hidden;
+}
+input[type="text"]:focus{
+	-webkit-box-shadow: inset 1px 1px 3px 0px #ddd;
+	box-shadow: inset 1px 1px 3px 0px #ddd;
+}
+.clearfix{}
+.clearfix:after, .clearfix:before{
+	content: "";
+	line-height: 0;
+	display: table;
+}
+.clearfix:after{
+	clear: both;
+}

@@ -1,0 +1,52 @@
+extends layout
+block styles
+	link(rel="stylesheet" href="/css/res/css/recruit.css")
+block content
+	div.main
+		div.main-header 
+			a.kz-sm-logo(href="http://www.kuaizhan.com/")
+		div.main-banner-wrapper
+			div.main-banner.base-container
+				img.join_kz(src="/images/join_kz.png")
+				a.look-pos(href="#pos",target="_self") 查看职位
+				img.recruit-banner(src="/images/recruit-banner.png")
+		div.base-container
+			div.section-introduction
+				ul.inline-ul
+					li
+						a.kz-bg-logo(href="http://www.kuaizhan.com/")
+					li.separate
+					li.introduction 
+						a.link.to-kz(href="http://www.kuaizhan.com/") 快站 
+						span 是一个强大的移动建站云平台，从2014至今已经为上百万中小站长提供了建站和营销服务。
+			div.section-us-hope #{hope}
+			include slide
+			include about-pos
+block scripts
+	script(type="text/javascript" src="/js/common.js")
+	script(type="text/javascript").
+		require.config({
+			baseUrl: "../js/",
+			paths: {
+				"jquery": "lib/jquery"
+			}
+		});
+		require(["unfold", "slide"], function(unfold, slide) {
+			var hide_class = "not-spread",
+				show_class = "not-spread-top";
+			unfold({
+				way: "change_height",
+				show_cb: function(e) {
+					e = e.click.find("." + hide_class);
+					e.attr("class", show_class);
+				}, 
+				hide_cb: function(e) {
+					e = e.click.find("." + show_class);
+					e.attr("class", hide_class);
+				}
+			});
+
+			new slide({
+				page_name: "recruit"
+			});
+		});

@@ -1,0 +1,173 @@
+@charset "utf-8";
+
+@import "modules/var";
+@import "modules/mixins";
+@import "modules/triangle";
+
+$container-width: 950px;
+$login-btn-width: 60px; 
+$login-triangle-hwidth: 8px;
+$login-triangle-height: 6px;
+$login-dl-line-height: 38px;
+$login-dl-color: #606060;
+$validata-dl-input-width: 114px;
+
+.mixheader{
+	width: 100%;
+	@include h-equal-lh($mixheader-height);
+	font-size: $font-size-small;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: $max-z-index;
+	background: $mixheader-background;
+}
+.mixheader-font{
+	float: left;
+	color: #fff;
+	font-family: "微软雅黑","微软雅黑","Microsoft YaHei",Helvetica,Tahoma,sans-serif;
+}
+.changyan{
+	@include hack-ie(0.5);	
+	@extend .mixheader-font;
+}
+.kuaizhan{
+	@include hack-ie(0.8);
+	margin: 0 20px 0 10px;
+	@extend .mixheader-font;
+	position: relative;
+}
+.kuaizhan:before{
+	content: ".";
+	position: absolute;
+	left: 10px;
+	top: 7px;
+}
+.top-nav-register, .top-nav-login{
+	float: right;
+}
+.top-nav-login{
+	position: relative;
+	.unfold-default-todo{
+		display: none;
+	}
+}
+.btn-base-style{
+	display: block;
+	text-align: center;
+	color: #fff;
+	@include hack-ie(0.8);
+	&:hover{
+		@include hack-ie(1);
+	}
+}
+.btn-login{
+	width: $login-btn-width;
+	@extend .btn-base-style;
+}
+.btn-register{
+	background: #34a2e9;
+	width: 90px;
+	@extend .btn-base-style;
+}
+.login-box-wrapper{
+	position: absolute;
+	top: $mixheader-height - $login-triangle-height;
+}
+.login-box{
+	padding: 30px;
+	border: 1px solid #e5e5e5;
+	background: $login-box-color;
+	border-top: none;
+	position: absolute;
+	top: $login-triangle-height;
+	right: -80px;
+}
+
+.login-arrow{
+	width: 0px;
+	height: 0px;
+	@include triangle-top($login-triangle-hwidth, $login-triangle-height, $login-box-color);
+	position: absolute;
+	top: 2px;
+	left: $login-btn-width / 2 - $login-triangle-hwidth;
+}
+.container{
+	width: $container-width;
+	min-width: $container-width;
+	margin: 0 auto;
+}
+.login-dl{
+	width: 270px;
+	font-size: $font-size-base;
+	.input{
+		width: 220px;
+		padding: 8px 0;
+		border: 1px solid #eae9e9;
+		border-radius: 3px;
+		font-size: $font-size-base;
+		font-family: 'Microsoft Yahei';
+		&:focus{
+			border-color: #48adee;
+		}
+		text-indent: 10px;
+	}
+	.label{
+		color: $login-dl-color;
+		line-height: $login-dl-line-height;
+		float: left;
+	}
+}
+.validata-dl{
+	.label{
+		margin-left: -$font-size-base;
+	}
+	.input{
+		width: $validata-dl-input-width;
+		float: left;
+	}
+	.tips{
+		margin-left: 43px;
+		margin-top: -10px;
+	}
+}
+.validate-img{
+	width: 100px;
+	height: $login-dl-line-height;
+	margin-left: 5px;
+	cursor: pointer;
+}
+.tips{
+	font-size: $font-size-small;
+	color: #b20000;
+	@include h-equal-lh(20px);
+}
+.forget-font{
+	font-size: $font-size-small;
+	color: $login-dl-color;
+}
+.forgetPwd{
+	float: right;
+	@extend .forget-font;
+	&:hover{
+		@include font-darker($login-dl-color);
+	}
+}
+.remember-me{
+	margin-left: 10px;
+	@extend .forget-font;
+}
+#remember-me{
+	outline: none;
+}
+#login-btn{
+	margin: 20px 0px 0px 42px;
+	background: #32aef8;
+	width: $validata-dl-input-width;
+	border-radius: 5px;
+	@include h-equal-lh(40px);
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+	text-align: center;
+}
